@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "types": ["jest", "node"],
+    "lib": ["es2023"],
+    "target": "ESNext", // Set the JavaScript target version
+    "module": "ESNext", // Set the module system to ESNext
+    "outDir": "./dist", // Specify the output directory for compiled files
+    "rootDir": "./src", // Specify the root directory of input files
+    "strict": true, // Enable all strict type-checking options
+    "esModuleInterop": true, // Enables ESModule interoperability
+    "moduleResolution": "node", // Work with module resolution like Node.js
+    "declaration": true, // Generates corresponding '.d.ts' file
+    "sourceMap": true, // Generates corresponding '.map' file for debugging
+    "jsx": "react",
+    "jsxFactory": "createElement"
+  },
+  "include": ["src/**/*"],
+  "exclude": [
+    "node_modules", // Exclude the node_modules directory
+    "**/*.spec.ts", // Exclude test files from the compilation (optional)
+    "./playwright/**/*"
+  ],
+  "files": ["./custom-elements.d.ts"]
+}
