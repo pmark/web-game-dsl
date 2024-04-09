@@ -1,10 +1,9 @@
-import { PlatformerTemplate } from './src/templates';
-import { Player, Enemy } from './src/elements';
+import { createElement } from "../core";
+import { PlatformerTemplate } from "../templates";
 
 const MyGame = () => (
   <PlatformerTemplate>
-    <Player id="hero" />
-    <Enemy id="villain" />
+    <player id="hero" health={100} speed={100} />
+    <enemy id="villain" attackPower={10} />
   </PlatformerTemplate>
 );
-

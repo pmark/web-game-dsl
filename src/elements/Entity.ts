@@ -1,16 +1,15 @@
+import { BaseElement, type BaseElementProps } from "./BaseElement";
 import type { Component } from "./Component";
 
-export interface EntityProps {
-  id: string;
-  components: Component[]; // Array of components that add functionality to the entity
+export interface EntityProps extends BaseElementProps {
+  components?: Component[]; // Array of components that add functionality to the entity
 }
 
-export class Entity {
-  id: string;
+export class Entity extends BaseElement {
   components: Map<string, Component>;
 
   constructor({ id, components = [] }: EntityProps) {
-    this.id = id;
+    super({ id });
     this.components = new Map(components.map((c) => [c.constructor.name, c]));
   }
 
@@ -24,7 +23,7 @@ export class Entity {
     return this.components.get(componentType.name) as T | undefined;
   }
 
-  removeComponent(componentType: Function): void {
-    this.components.delete(componentType.name);
+  removeComponent(componentType: string): void {
+    this.components.delete(componentType);
   }
 }

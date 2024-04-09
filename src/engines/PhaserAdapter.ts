@@ -1,9 +1,8 @@
 export class PhaserAdapter {
-  createScene(sceneConfig) {
-    // Implementation for creating a Phaser scene
-  }
-
-  createSprite(spriteConfig) {
-    // Implementation for adding a sprite in Phaser
-  }
+  // createScene(sceneConfig: any) {
+  // Implementation for creating a Phaser scene
+  // }
+  // createSprite(spriteConfig) {
+  // Implementation for adding a sprite in Phaser
+  // }
 }

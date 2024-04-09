@@ -5,7 +5,7 @@ export interface EnemyProps extends BaseElementProps {
   attackPower: number;
 }
 
-export class Enemy extends BaseElement<EnemyProps> {
+export class Enemy extends BaseElement {
   attackPower: number;
 
   constructor(props: EnemyProps) {

@@ -1,17 +1,15 @@
-import type { BaseElementProps } from "./BaseElement";
+import { BaseElement, type BaseElementProps } from "./BaseElement";
 import type { Entity } from "./Entity";
 
 export interface SceneProps extends BaseElementProps {
-  id: string;
-  entities: Entity[];
+  entities?: Entity[];
 }
 
-export class Scene {
-  id: string;
+export class Scene extends BaseElement {
   entities: Entity[];
 
   constructor({ id, entities = [] }: SceneProps) {
-    this.id = id;
+    super({ id });
     this.entities = entities;
   }
 

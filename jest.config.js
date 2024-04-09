@@ -5,10 +5,15 @@ export default {
     "^(\\.{1,2}/.*)\\.js$": "$1", // Resolve .js extensions to .ts files
   },
   transform: {
-    "^.+\\.ts[x]?$": ["ts-jest", { useESM: true }],
+    "^.+\\.(ts|tsx)$": [
+      "ts-jest",
+      {
+        useESM: true,
+      },
+    ],
   },
   extensionsToTreatAsEsm: [".ts", ".tsx"],
   testEnvironment: "node",
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
-  testMatch: ["<rootDir>/__tests__/**/*.test.ts"],
+  testMatch: ["<rootDir>/src/__tests__/**/*.test.ts"],
 };

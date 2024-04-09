@@ -1,4 +1,4 @@
-import { createElement } from "../src/core";
+import { createElement } from "../core";
 
 describe("createElement", () => {
   it("should create a complex element with nested children", () => {
@@ -20,9 +20,9 @@ describe("createElement", () => {
 describe("parseJSX", () => {
   it("should correctly parse simple JSX", () => {
     const result = (
-      <game title="test game" engine="phaser">
-        <scene>
-          <entity key="player" />
+      <game title="test game">
+        <scene id="play">
+          <entity id="player" />
         </scene>
       </game>
     );

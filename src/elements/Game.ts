@@ -5,30 +5,31 @@ import type { Scene } from "./Scene";
 export interface GameProps extends BaseElementProps {
   title?: string;
   scenes?: Scene[];
-  currentState?: GameState;
+  initialStateId?: string;
+  engine?: Engine;
 }
 
 /**
  * Represents a game and its scenes which are usually associated with game states.
  */
 export class Game {
+  engine: Engine;
   title: string;
   scenes: Map<string, Scene>;
   currentState: GameState;
 
-  constructor({ title = "", scenes = [], currentState }: GameProps) {
+  // Make a list of engines for easy code completion
+
+  constructor({
+    title = "",
+    scenes = [],
+    engine = "phaser",
+    initialStateId = "",
+  }: GameProps) {
+    this.engine = engine;
     this.title = title;
     this.scenes = new Map(scenes.map((s) => [s.id, s]));
-
-    const firstScene = scenes[0];
-    if (firstScene) {
-      this.currentState = new GameState({
-        scene: firstScene,
-        id: firstScene.id,
-      });
-    } else {
-      this.currentState = new GameState({ id: GameState.initial });
-    }
+    this.currentState = this.changeState(initialStateId || GameState.initial);
   }
 
   /**
@@ -37,10 +38,19 @@ export class Game {
    * @param gameStateKey - The key of the game state scene ID to use unless otherwise specified.
    * @param sceneId - Optional scene ID override.
    */
-  changeState(gameStateKey: string, sceneId = ""): void {
-    const scene = this.scenes.get(sceneId || gameStateKey);
-    if (scene) {
-      this.currentState = new GameState({ scene, id: gameStateKey });
+  changeState(gameStateKey: string, sceneId = ""): GameState {
+    const sceneKey = sceneId || gameStateKey;
+    if (!sceneKey) {
+      throw new Error("No scene ID provided while changing game state.");
     }
+
+    const scene = this.scenes.get(sceneKey);
+    if (scene) {
+      return new GameState({ scene, id: gameStateKey });
+    }
+    return this.currentState;
   }
 }
+
+// Instead of an enum, we can use a union type to represent the different engines
+export type Engine = "phaser" | "three" | "babylon";
