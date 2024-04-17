@@ -9,14 +9,16 @@ const adapter = new PhaserAdapter({
   width: 1024,
   height: 768,
   renderer: "auto",
-  parent: "game-container",
   physicsEngine: {
     default: "arcade",
-    options: { arcade: { debug: true } },
+    arcade: {
+      gravity: { x: 0, y: 200 },
+    },
   },
 });
 
-adapter.addScene("main", { gravity: 200 });
+adapter.addScene("main", {});
+
 adapter.createSprite("main", {
   x: 100,
   y: 100,

@@ -12,29 +12,20 @@ export class PhaserAdapter {
   private scenes: Map<string, Phaser.Scene>;
 
   constructor(config: GameConfig) {
-    // const gameSettings: Phaser.Types.Core.GameConfig = {
-    //   type: config.renderer === "WebGL" ? Phaser.WEBGL : Phaser.CANVAS,
-    //   width: config.width,
-    //   height: config.height,
-    //   physics: {
-    //     default: config.physicsEngine.default,
-    //     [config.physicsEngine.default]: config.physicsEngine.options,
-    //   },
-    // };
+    const gameConfig = {
+      type: Phaser.AUTO,
+      ...config,
+    };
 
-    this.game = new Phaser.Game(config);
+    this.game = new Phaser.Game(gameConfig);
     this.scenes = new Map();
   }
 
-  addScene(sceneId: string, sceneConfig: any): void {
-    const scene = new Phaser.Scene({
-      key: sceneId,
-      // physics: {
-      //   arcade: {
-      //     gravity: { y: sceneConfig.gravity },
-      //   },
-      // },
-    });
+  addScene(
+    sceneId: string,
+    sceneConfig: string | Phaser.Types.Scenes.SettingsConfig
+  ): void {
+    const scene = new Phaser.Scene({ key: sceneId });
 
     scene.create = () => {
       const camera = scene.cameras.main;

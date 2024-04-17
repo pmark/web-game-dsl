@@ -1,0 +1,54 @@
+{
+  "gameStates": [
+    {
+      "name": "MainMenu",
+      "UI": ["startButton", "optionsButton", "creditsButton"],
+      "scene": {
+        "entities": [],
+        "componentSystems": [],
+        "sceneStates": [],
+        "eventListeners": ["onStartClick", "onOptionsClick", "onCreditsClick"]
+      }
+    },
+    {
+      "name": "GamePlay",
+      "UI": ["scoreDisplay", "pauseButton", "healthBar"],
+      "scene": {
+        "entities": [
+          {
+            "name": "player",
+            "components": ["Position", "Velocity", "Health", "Renderable"],
+            "entityStates": ["isAlive", "isMoving"],
+            "eventListeners": ["onCollision", "onPowerUp"]
+          },
+          {
+            "name": "enemy",
+            "components": ["Position", "Velocity", "Health", "Renderable"],
+            "entityStates": ["isAlive"],
+            "eventListeners": ["onCollision"]
+          },
+          {
+            "name": "powerUp",
+            "components": ["Position", "Renderable"],
+            "entityStates": ["isActive"],
+            "eventListeners": ["onCollect"]
+          }
+        ],
+        "componentSystems": ["MovementSystem", "CollisionSystem", "RenderSystem", "HealthSystem"],
+        "sceneStates": ["isPaused", "isGameOver"],
+        "eventListeners": ["onPauseClick", "onGameResume", "onGameOver"]
+      }
+    },
+    {
+      "name": "GameOver",
+      "UI": ["restartButton", "mainMenuButton"],
+      "scene": {
+        "entities": [],
+        "componentSystems": [],
+        "sceneStates": [],
+        "eventListeners": ["onRestartClick", "onMainMenuClick"]
+      }
+    }
+  ]
+}
+
