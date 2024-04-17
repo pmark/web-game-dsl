@@ -8,35 +8,38 @@ interface GameConfig {
 }
 
 export class PhaserAdapter {
-  private game: Phaser.Game;
+  game: Phaser.Game;
   private scenes: Map<string, Phaser.Scene>;
 
   constructor(config: GameConfig) {
-    const gameSettings: Phaser.Types.Core.GameConfig = {
-      type: config.renderer === "WebGL" ? Phaser.WEBGL : Phaser.CANVAS,
-      width: config.width,
-      height: config.height,
-      physics: {
-        default: config.physicsEngine.default,
-        [config.physicsEngine.default]: config.physicsEngine.options,
-      },
-    };
+    // const gameSettings: Phaser.Types.Core.GameConfig = {
+    //   type: config.renderer === "WebGL" ? Phaser.WEBGL : Phaser.CANVAS,
+    //   width: config.width,
+    //   height: config.height,
+    //   physics: {
+    //     default: config.physicsEngine.default,
+    //     [config.physicsEngine.default]: config.physicsEngine.options,
+    //   },
+    // };
 
-    this.game = new Phaser.Game(gameSettings);
+    this.game = new Phaser.Game(config);
     this.scenes = new Map();
   }
 
   addScene(sceneId: string, sceneConfig: any): void {
     const scene = new Phaser.Scene({
       key: sceneId,
-      physics: {
-        arcade: {
-          gravity: { y: sceneConfig.gravity },
-        },
-        // Additional physics configuration as necessary
-      },
-      // Other scene-specific properties
+      // physics: {
+      //   arcade: {
+      //     gravity: { y: sceneConfig.gravity },
+      //   },
+      // },
     });
+
+    scene.create = () => {
+      const camera = scene.cameras.main;
+      camera.setBackgroundColor(0x00ff99);
+    };
 
     this.scenes.set(sceneId, scene);
     this.game.scene.add(sceneId, scene, true);
@@ -63,22 +66,3 @@ export class PhaserAdapter {
 
   // Additional methods for event handling, asset management, etc.
 }
-
-// Example of configuration usage
-const adapter = new PhaserAdapter({
-  width: 800,
-  height: 600,
-  renderer: "WebGL",
-  physicsEngine: {
-    default: "arcade",
-    options: { arcade: { debug: true } },
-  },
-});
-
-adapter.addScene("main", { gravity: 200 });
-adapter.createSprite("main", {
-  x: 100,
-  y: 100,
-  texture: "player",
-  velocity: { x: 0, y: 0 },
-});
