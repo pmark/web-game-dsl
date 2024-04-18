@@ -51,8 +51,6 @@ const MyGame = () => {
       <States />
       <HUD />
       <UserInput />
-      // Extra elements
-      <Config />
       <Achievements />
       <Localization />
     </Game>
@@ -181,7 +179,7 @@ const UserInput = () => {
 
 #### Config
 
-TODO
+A default game configuration object will be loaded automatically from this package unless your project has a file named `web-game-dsl-config.ts` in the root folder, or if the Game element specifies the config e.g. `<Game config={yourGameConfig}>`. Take a look at the [default configuration](./src/core/default-config.ts) to see what's possible.
 
 #### Achievements
 
