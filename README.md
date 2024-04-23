@@ -70,6 +70,9 @@ import {
 } from "web-game-dsl";
 
 const Assets = () => {
+  return (
+    <Asset type="image" src="player.png" key="playerSprite" />
+
     <SoundRegistry
         basePath="audio/"
         extension=".mp3"
@@ -85,6 +88,8 @@ const Assets = () => {
     />
 
     <PreloadSounds keys={["bg_music", "collect"]} />
+  );
+}
 ```
 
 #### Scenes
