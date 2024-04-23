@@ -1,0 +1,1 @@
+{"version":3,"file":"EntityState.js","sourceRoot":"","sources":["../../src/elements/EntityState.ts"],"names":[],"mappings":"AAQA,MAAM,OAAO,WAAW;IACtB,MAAM,CAAS;IACf,QAAQ,CAAU;IAElB,YAAY,EAAE,MAAM,EAAE,QAAQ,GAAG,IAAI,EAAoB;QACvD,IAAI,CAAC,MAAM,GAAG,MAAM,CAAC;QACrB,IAAI,CAAC,QAAQ,GAAG,QAAQ,CAAC;IAC3B,CAAC;CACF"}
