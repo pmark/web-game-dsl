@@ -1,16 +1,17 @@
 {
-  "name": "card-memory",
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "vite": "^5.2.0"
-  },
-  "dependencies": {
-    "phaser": "^3.80.1"
-  }
+    "name": "card-memory",
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "preview": "vite preview",
+        "dev": "vite --config vite/config.dev.mjs",
+        "build": "vite build --config vite/config.prod.mjs"
+    },
+    "devDependencies": {
+        "terser": "^5.30.4",
+        "vite": "^5.2.0"
+    },
+    "dependencies": {
+        "phaser": "^3.80.1"
+    }
 }
