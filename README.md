@@ -1,4 +1,6 @@
-# Web Game DSL
+# :construction: Web Game DSL :construction:
+
+__WORK IN PROGRESS__
 
 Web Game DSL is a domain-specific language (DSL) implemented in TypeScript for building interactive web-based games. This project abstracts complex functionalities into simple, reusable JSX components. These components interface with underlying game engines like Phaser 3, allowing developers to focus on crafting game logic and design rather than boilerplate code. The DSL is designed to be engine-agnostic, with the initial implementation targeting Phaser 3, and can be adapted to other engines to meet various development needs.
 
